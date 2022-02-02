@@ -1,46 +1,100 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState,useEffect } from "react";
-import lottie from "lottie-web";
+import { useState, useEffect } from "react";
+import Lottie from "react-lottie";
+import animationData from "../src/images/moon.json";
+
+const pages = {
+  1: "اسم و فامیل",
+  2: "تشریحی",
+  3: "تستی",
+  4: "چندگزینه ای",
+  5: "thanks",
+};
+const animations = {
+  1: {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+  },
+  2: {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+  },
+  3: {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+  },
+  4: {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+  },
+  5: {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+  },
+};
 
 function App() {
-  let animation1=null;
+  let animation1 = null;
   const [controlerPage, setControlerPage] = useState(1);
-  useEffect(() => {
-    lottie.loadAnimation({
-      container: animation1.current,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      animationData: require("../src/images/manifest.json"),
+  // useEffect(() => {
+  //   lottie.loadAnimation({
+  //     container: animation1.current,
+  //     renderer: "svg",
+  //     loop: true,
+  //     autoplay: true,
+  //     // animationData: require("../src/images/manifest.json"),
 
-      //   path: "./lottie/animation.json",
-    });
-  }, []);
+  //     // path: "../src/images/manifest.json",
+  //   });
+  // }, []);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+  };
   return (
-    <div className="h-screen bg-slate-700 flex flex-col justify-center items-center">
-      
-      <div className="w-24 h-12 bg-gray-200 mb-3 rounded-xl flex justify-center items-center relative">
+    <div className="flex flex-col items-center justify-center h-screen bg-slate-700">
+      <div className="relative flex items-center justify-center w-24 h-12 mb-3 bg-gray-200 rounded-xl">
         2:00
         <div className="count-page  left-[-60px]">5</div>
         <div className="count-page  right-[-60px]">{controlerPage}</div>
       </div>
-      <div  className="w-2/3 bg-gray-200 h-2/3 rounded-xl shadow-lg relative">
-        <div onClick={()=>{
-          if(controlerPage !== 1){
-            setControlerPage(controlerPage-1)
-          }
-        }} className="icon right-2 ">
+      <div className="relative flex items-center justify-center w-2/3 bg-gray-200 shadow-lg h-2/3 rounded-xl">
+        <div
+          onClick={() => {
+            if (controlerPage !== 1) {
+              setControlerPage(controlerPage - 1);
+            }
+          }}
+          className="icon right-2 "
+        >
           &#10094;
         </div>
-        <div onClick={()=>{
-          if(controlerPage !== 5){
-            setControlerPage(controlerPage+1)
-          }
-        }} className="icon  left-2 ">
+        <div
+          onClick={() => {
+            if (controlerPage !== 5) {
+              setControlerPage(controlerPage + 1);
+            }
+          }}
+          className="icon left-2 "
+        >
           &#10095;
         </div>
-        <div ref={animation1} className=""></div>
+        {pages[controlerPage]}
+        {/*  */}
+        <div className="absolute flex p-5 h-36 right-2 bottom-2 rounded-xl">
+          <Lottie options={defaultOptions} />
+          <Lottie options={defaultOptions} />
+          <Lottie options={defaultOptions} />
+          <Lottie options={defaultOptions} />
+          <Lottie options={defaultOptions} />
+        </div>
       </div>
     </div>
   );
