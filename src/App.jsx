@@ -46,7 +46,9 @@ const animations = {
 
 function App() {
   let animation1 = null;
-  const [controlerPage, setControlerPage] = useState(1);
+  const [controlerPage, setControlerPage] = useState(
+    localStorage.getItem("#page") ? +localStorage.getItem("#page") : 1
+  );
   // useEffect(() => {
   //   lottie.loadAnimation({
   //     container: animation1.current,
@@ -75,6 +77,7 @@ function App() {
           onClick={() => {
             if (controlerPage !== 1) {
               setControlerPage(controlerPage - 1);
+              localStorage.setItem("#page", controlerPage - 1);
             }
           }}
           className="icon right-2 "
@@ -85,6 +88,7 @@ function App() {
           onClick={() => {
             if (controlerPage !== 5) {
               setControlerPage(controlerPage + 1);
+              localStorage.setItem("#page", controlerPage + 1);
             }
           }}
           className="icon left-2 "
@@ -95,9 +99,14 @@ function App() {
         {/*  */}
         <div className="absolute flex p-5 h-36 right-2 bottom-2 rounded-xl">
           <Lottie options={defaultOptions} />
+        </div>
+        <div className="absolute flex p-5 h-36 right-2 top-2 rounded-xl">
           <Lottie options={defaultOptions} />
+        </div>
+        <div className="absolute flex p-5 h-36 left-2 bottom-2 rounded-xl">
           <Lottie options={defaultOptions} />
-          <Lottie options={defaultOptions} />
+        </div>
+        <div className="absolute flex p-5 h-36 left-2 top-2 rounded-xl">
           <Lottie options={defaultOptions} />
         </div>
       </div>
