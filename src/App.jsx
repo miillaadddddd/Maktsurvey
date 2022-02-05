@@ -3,13 +3,18 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Lottie from "react-lottie";
 import animationData from "../src/images/moon.json";
+import Qfamily from "./components/qfamily";
+import Qone from "./components/qOne";
+import Qtest from "./components/qtest";
+import QLastTest from "./components/qLastTest";
+import Tanks from "./components/thanks";
 
 const pages = {
-  1: "اسم و فامیل",
-  2: "تشریحی",
-  3: "تستی",
-  4: "چندگزینه ای",
-  5: "thanks",
+  1: <Qfamily />,
+  2: <Qone />,
+  3: <Qtest />,
+  4: <QLastTest />,
+  5: <Tanks />,
 };
 const animations = {
   1: {
