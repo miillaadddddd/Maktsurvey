@@ -8,7 +8,7 @@ function Qfamily() {
     <div className="w-[80%]">
       <form>
         <label
-          class="block text-gray-700 text-sm font-bold mb-4"
+          class="block text-gray-700 text-lg font-bold mb-4"
           for="username"
         >
           نام و نام خانوادگی:

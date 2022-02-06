@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 
 function Qtest() {
-  const [qtest, setQtest] = useState({
-    isgood: true,
-    isbad: false,
-  });
+  let local = JSON.parse(localStorage.getItem("#qtest"));
+  const [qtest, setQtest] = useState(
+    local
+      ? local
+      : {
+          isgood: true,
+          isbad: false,
+        }
+  );
 
   const selectCheck = () => {
     let newAnswre = {};
     for (let [key, value] of Object.entries(qtest)) {
       newAnswre[key] = !value;
     }
+    localStorage.setItem("#qtest", JSON.stringify(newAnswre));
     setQtest(newAnswre);
   };
   return (
@@ -18,14 +24,15 @@ function Qtest() {
       <div className="w-[80%]">
         <form>
           <label
-            class="block text-gray-700 text-sm font-bold mb-4"
+            class="block text-gray-700 text-lg font-bold mb-4"
             for="username"
           >
             نظرتون درباره برنامه نویسی من چیه؟
           </label>
 
-          <div className="">
+          <div className="mb-2">
             <input
+              className="cursor-pointer"
               name="isgood"
               type="checkbox"
               checked={qtest.isgood}
@@ -33,11 +40,12 @@ function Qtest() {
                 selectCheck();
               }}
             />
-            <label>خوبه</label>
+            <label className="mr-4 text-lg cursor-pointer">خوبه</label>
           </div>
 
           <div className="">
             <input
+              className="cursor-pointer"
               name="isbad"
               type="checkbox"
               checked={qtest.isbad}
@@ -45,7 +53,7 @@ function Qtest() {
                 selectCheck();
               }}
             />
-            <label>بده</label>
+            <label className="mr-4 text-lg cursor-pointer">بده</label>
           </div>
         </form>
       </div>

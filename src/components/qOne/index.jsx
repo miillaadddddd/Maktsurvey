@@ -8,7 +8,7 @@ function Qone() {
     <div className="w-[80%]">
       <form>
         <label
-          class="block text-gray-700 text-sm font-bold mb-4"
+          class="block text-gray-700  font-bold mb-4 text-lg"
           for="username"
         >
           خودتون را در یک جمله تعریف کنید :
