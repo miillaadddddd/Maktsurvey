@@ -3,6 +3,9 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Lottie from "react-lottie";
 import animationData from "../src/images/moon.json";
+import ani1 from "../src/images/polar-bear.json";
+import ani2 from "../src/images/satisfied-bear.json";
+import ani3 from "../src/images/surprised.json";
 import Qfamily from "./components/qfamily";
 import Qone from "./components/qOne";
 import Qtest from "./components/qtest";
@@ -16,36 +19,8 @@ const pages = {
   4: <QLastTest />,
   5: <Tanks />,
 };
-const animations = {
-  1: {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-  },
-  2: {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-  },
-  3: {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-  },
-  4: {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-  },
-  5: {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-  },
-};
 
 function App() {
-  let animation1 = null;
   const [controlerPage, setControlerPage] = useState(
     localStorage.getItem("#page") ? +localStorage.getItem("#page") : 1
   );
@@ -100,15 +75,39 @@ function App() {
         <div className="absolute flex p-5 h-36 right-2 bottom-2 rounded-xl">
           <Lottie options={defaultOptions} />
         </div>
-        <div className="absolute flex p-5 h-36 right-2 top-2 rounded-xl">
-          <Lottie options={defaultOptions} />
-        </div>
-        <div className="absolute flex p-5 h-36 left-2 bottom-2 rounded-xl">
-          <Lottie options={defaultOptions} />
-        </div>
-        <div className="absolute flex p-5 h-36 left-2 top-2 rounded-xl">
-          <Lottie options={defaultOptions} />
-        </div>
+        {controlerPage > 1 && (
+          <div className="absolute flex p-5 h-36 right-2 top-2 rounded-xl">
+            <Lottie
+              options={{
+                loop: true,
+                autoplay: true,
+                animationData: ani1,
+              }}
+            />
+          </div>
+        )}
+        {controlerPage > 2 && (
+          <div className="absolute flex p-5 h-36 left-2 top-2 rounded-xl">
+            <Lottie
+              options={{
+                loop: true,
+                autoplay: true,
+                animationData: ani3,
+              }}
+            />
+          </div>
+        )}
+        {controlerPage > 3 && (
+          <div className="absolute left-0 flex h-48 bottom-2 rounded-xl">
+            <Lottie
+              options={{
+                loop: true,
+                autoplay: true,
+                animationData: ani2,
+              }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

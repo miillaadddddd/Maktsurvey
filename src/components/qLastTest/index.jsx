@@ -27,6 +27,14 @@ function QLastTest() {
   };
   useEffect(() => {
     if (qLastTest.low) {
+      localStorage.setItem(
+        "#qLastTest",
+        JSON.stringify({
+          very: true,
+          medium: false,
+          low: false,
+        })
+      );
       setTimeout(() => {
         setQLastTest({
           very: true,
