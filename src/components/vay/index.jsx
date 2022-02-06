@@ -3,10 +3,14 @@ import React, { useEffect, useState } from "react";
 function Vay() {
   const [arr, setArr] = useState(["m", "i", "l", "a", "d"]);
 
-  setInterval(() => {
+  const myInterval = setInterval(() => {
     let newArr = [...arr, ...arr];
     setArr(newArr);
   }, 500);
+
+  setTimeout(() => {
+    clearInterval(myInterval);
+  }, 3500);
 
   return (
     <>

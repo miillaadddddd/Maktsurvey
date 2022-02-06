@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Vay from "../vay";
 
-function QLastTest() {
+function QLastTest({ handelPage }) {
   let local = JSON.parse(localStorage.getItem("#qLastTest"));
   const [qLastTest, setQLastTest] = useState(
     local
@@ -47,7 +47,7 @@ function QLastTest() {
 
   return (
     <>
-      <div className="w-[80%]">
+      <div className="w-[80%]  animate-fade-in-down">
         <form>
           <label class="block text-gray-700 text-lg font-bold mb-4">
             احسان گازار را چقدر دوست دارید؟

@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 
-function Qfamily() {
+function Qfamily({ handelPage }) {
   const [name, setName] = useState(
     localStorage.getItem("#name") ? localStorage.getItem("#name") : ""
   );
   return (
-    <div className="w-[80%]">
-      <form>
+    <div className="w-[80%] animate-fade-in-down">
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handelPage();
+        }}
+      >
         <label
           class="block text-gray-700 text-lg font-bold mb-4"
           for="username"

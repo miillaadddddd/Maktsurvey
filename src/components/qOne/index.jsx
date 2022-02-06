@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-function Qone() {
+function Qone({ handelPage }) {
   const [qone, setQone] = useState(
     localStorage.getItem("#qone") ? localStorage.getItem("#qone") : ""
   );
   return (
-    <div className="w-[80%]">
+    <div className="w-[80%]  animate-fade-in-down">
       <form>
         <label
           class="block text-gray-700  font-bold mb-4 text-lg"
