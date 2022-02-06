@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Vay from "../vay";
 
 function QLastTest() {
   let local = JSON.parse(localStorage.getItem("#qLastTest"));
@@ -24,6 +25,18 @@ function QLastTest() {
     localStorage.setItem("#qLastTest", JSON.stringify(newAnswre));
     setQLastTest(newAnswre);
   };
+  useEffect(() => {
+    if (qLastTest.low) {
+      setTimeout(() => {
+        setQLastTest({
+          very: true,
+          medium: false,
+          low: false,
+        });
+      }, 4000);
+    }
+  }, [qLastTest]);
+
   return (
     <>
       <div className="w-[80%]">
@@ -76,6 +89,7 @@ function QLastTest() {
           گزینه آخر را به هیچ وجه انتخاب نکنید.
         </div>
       </div>
+      {qLastTest.low && <Vay />}
     </>
   );
 }
